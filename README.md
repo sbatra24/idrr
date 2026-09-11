@@ -2,7 +2,7 @@
 
 Code for **Learning Compact Representations via Intrinsic Dimension Regularization**, published in the Proceedings of Machine Learning Research (PMLR) through the GRaM workshop at ICLR 2026, Proceedings Track. Authors: Kaustubh Bukkapatnam, Laksh Patel, Soham Batra.
 
-The whole thing is one Colab notebook, `IDRR_reproduction.ipynb`. It rebuilds every experiment in the paper from scratch: the method, the seven baselines, the four datasets, Tables 1 to 5, and all the figures. The original experiment code was lost, so this is a clean reimplementation written against the paper's own specification (Section 5 and Appendix C).
+`IDRR_reproduction.ipynb` rebuilds every experiment in the paper from scratch: the method, the seven baselines, the four datasets, Tables 1 to 5, and all the figures. The original experiment code was lost, so this is a clean reimplementation written against the paper's own specification (Section 5 and Appendix C).
 
 ## The idea
 
@@ -12,7 +12,7 @@ The result in the paper is that IDRR combined with dropout matches dropout's acc
 
 ## Running it
 
-Open the notebook in Colab with a T4 runtime and run all. `RUN_MODE = "smoke"` checks the pipeline in about five minutes on one seed. `RUN_MODE = "full"` uses the paper's protocol: AdamW at 1e-3 with cosine annealing, batch 128, up to 500 epochs with early stopping at patience 15, five seeds (three for CIFAR-10), 10,000 train and 2,000 test examples per dataset. The MLP sweep is about two hours; the CNN sweep (Table 2) is another three to four and is gated by `RUN_CNN`.
+Open the notebook on a GPU runtime and run all. `RUN_MODE = "smoke"` checks the pipeline on one seed. `RUN_MODE = "full"` uses the paper's protocol: AdamW at 1e-3 with cosine annealing, batch 128, up to 500 epochs with early stopping at patience 15, five seeds (three for CIFAR-10), 10,000 train and 2,000 test examples per dataset. The MLP sweep is about two hours; the CNN sweep (Table 2) is another three to four and is gated by `RUN_CNN`.
 
 Everything is written to `results/` as CSV and PNG. Set `SAVE_TO_DRIVE = True` to keep them across runtime restarts.
 
